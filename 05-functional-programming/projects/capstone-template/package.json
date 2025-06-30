@@ -1,0 +1,66 @@
+{
+  "name": "functional-task-manager",
+  "version": "1.0.0",
+  "description": "A task management system built with functional programming principles",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix"
+  },
+  "keywords": [
+    "functional-programming",
+    "javascript",
+    "task-management",
+    "immutable",
+    "pure-functions"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.29.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "nodemon": "^3.0.0",
+    "eslint": "^8.0.0",
+    "@eslint/js": "^9.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/app.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es2021": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2021,
+      "sourceType": "module"
+    },
+    "rules": {
+      "prefer-const": "error",
+      "no-var": "error",
+      "no-param-reassign": "error",
+      "prefer-arrow-callback": "error",
+      "no-console": "warn"
+    }
+  }
+}

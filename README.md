@@ -215,41 +215,118 @@ Welcome to your comprehensive JavaScript learning repository! This guide will ta
 
 #### Week 13-14: Functional Programming
 
-- [ ] **Higher-Order Functions**
+**📁 Module Location:** [`05-functional-programming/`](05-functional-programming/)
+
+- [ ] **Function Fundamentals**
 
   - Functions as first-class citizens
-  - Passing functions as arguments
-  - Returning functions from functions
+  - Function expressions and arrow functions
+  - IIFE patterns and function factories
+  - Understanding function declaration vs expression
 
-- [ ] **Closures**
+- [ ] **Higher-Order Functions**
 
-  - Understanding lexical scope
-  - Practical closure examples
-  - Module pattern
+  - Functions that accept other functions as arguments
+  - Functions that return other functions
+  - Creating reusable function utilities
+  - Building function decorators and combinators
+
+- [ ] **Closures and Practical Applications**
+
+  - Understanding lexical scope and closure creation
+  - Data privacy and encapsulation with closures
+  - Module pattern implementation
+  - State management and configuration patterns
 
 - [ ] **Pure Functions and Immutability**
-  - Side effects and pure functions
-  - Immutable data patterns
-  - Functional array methods
+
+  - Writing functions without side effects
+  - Understanding immutable data patterns
+  - Benefits for testing and debugging
+  - Avoiding common functional programming pitfalls
+
+- [ ] **Functional Array Methods**
+
+  - Mastering map, filter, reduce, and advanced methods
+  - Method chaining for data transformation pipelines
+  - Custom functional array utilities
+  - Performance considerations in functional data processing
+
+- [ ] **Currying and Function Composition**
+
+  - Partial application techniques
+  - Creating specialized functions through currying
+  - Function composition patterns (pipe and compose)
+  - Building complex operations from simple functions
+
+- [ ] **Functional Programming Patterns**
+  - Common FP design patterns and when to use them
+  - Error handling in functional style
+  - Lazy evaluation and memoization
+  - Introduction to monads and functors
+
+**🎯 Capstone Project:** Functional Task Management System demonstrating all FP concepts
 
 #### Week 15-16: Modern JavaScript (ES6+)
 
-- [ ] **Destructuring**
+**📁 Module Location:** [`06-modern-javascript/`](06-modern-javascript/)
 
-  - Array destructuring
-  - Object destructuring
-  - Default values and rest parameters
+- [ ] **Destructuring and Spread/Rest Operators**
 
-- [ ] **Template Literals**
+  - Array and object destructuring patterns
+  - Nested destructuring and default values
+  - Function parameter destructuring
+  - Spread operator for arrays and objects
+  - Rest parameters and variable arguments
 
-  - String interpolation
-  - Multi-line strings
-  - Tagged templates
+- [ ] **Template Literals and Tagged Templates**
 
-- [ ] **Modules**
-  - `import` and `export`
-  - Default exports
-  - Module bundling concepts
+  - String interpolation and expression embedding
+  - Multiline strings and formatting
+  - Tagged template functions and custom processing
+  - HTML generation and SQL query building
+  - Template-based validation patterns
+
+- [ ] **Arrow Functions and Enhanced Objects**
+
+  - Arrow function syntax and use cases
+  - Lexical `this` binding and implications
+  - Enhanced object literal syntax
+  - Computed property names and method definitions
+  - Property shorthand and getter/setter syntax
+
+- [ ] **ES6 Classes and Modern Inheritance**
+
+  - Class syntax and constructor methods
+  - Static methods and private fields
+  - Inheritance with `extends` and `super`
+  - Class expressions and mixins
+  - Modern OOP patterns with classes
+
+- [ ] **Module System: Import/Export**
+
+  - Named exports and default exports
+  - Import syntax variations and aliasing
+  - Dynamic imports and lazy loading
+  - Module patterns and barrel exports
+  - Tree shaking and code splitting concepts
+
+- [ ] **Modern Async Patterns**
+
+  - Enhanced Promise patterns and utilities
+  - Async/await best practices and error handling
+  - Async iterators and generators
+  - Concurrent operations and Promise combinators
+  - Modern fetch patterns and API integration
+
+- [ ] **New Data Structures and Features**
+  - Map, Set, WeakMap, and WeakSet
+  - Symbols and well-known symbols
+  - Proxy and Reflect APIs
+  - Iterators and the iteration protocol
+  - Latest ES2020+ features (optional chaining, nullish coalescing)
+
+**🎯 Capstone Project:** Modern JavaScript Application showcasing ES6+ features
 
 #### Week 17-18: Browser APIs and Storage
 
@@ -421,7 +498,8 @@ Welcome to your comprehensive JavaScript learning repository! This guide will ta
 - [ ] **Week 4**: Build your first interactive webpage
 - [ ] **Week 8**: Create a dynamic web application with API integration
 - [ ] **Week 12**: Develop an object-oriented JavaScript project using classes, inheritance, and design patterns
-- [ ] **Week 16**: Build a modern ES6+ application
+- [ ] **Week 14**: Build a functional programming application using pure functions, immutability, and composition
+- [ ] **Week 16**: Build a modern ES6+ application using modules, classes, and advanced syntax
 - [ ] **Week 20**: Create a performance-optimized web application
 - [ ] **Week 24**: Complete a full-stack JavaScript project
 
@@ -435,6 +513,30 @@ Upon completing the OOP module, you should be able to:
 - ✅ Build a complete object-oriented application
 - ✅ Understand performance considerations in OOP JavaScript
 - ✅ Debug OOP code effectively
+
+### 🔧 Functional Programming Module Completion (Week 13-14)
+
+Upon completing the Functional Programming module, you should be able to:
+
+- ✅ Write pure functions and avoid side effects
+- ✅ Apply higher-order functions and function composition
+- ✅ Use currying and partial application effectively
+- ✅ Implement immutable data patterns
+- ✅ Handle errors functionally with Maybe and Either patterns
+- ✅ Build data processing pipelines using functional techniques
+- ✅ Create maintainable and testable functional code
+
+### 🚀 Modern JavaScript Module Completion (Week 15-16)
+
+Upon completing the Modern JavaScript module, you should be able to:
+
+- ✅ Use destructuring for clean variable assignment and function parameters
+- ✅ Apply template literals for string formatting and HTML generation
+- ✅ Implement ES6 modules with proper import/export patterns
+- ✅ Write modern classes with private fields and static methods
+- ✅ Handle async operations with modern patterns and best practices
+- ✅ Utilize new data structures (Map, Set, Proxy) effectively
+- ✅ Apply latest ES2020+ features in real applications
 
 ## 🤝 Contributing
 
