@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade Calculator - JavaScript Fundamentals</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1><i class="fas fa-graduation-cap"></i> Grade Calculator</h1>
+        <p class="subtitle">
+          Demonstrating Arrays, Objects, Functions, and Loops
+        </p>
+      </header>
+
+      <main class="main-content">
+        <!-- Grade Input Section -->
+        <section class="input-section">
+          <div class="card">
+            <h2><i class="fas fa-plus-circle"></i> Add Assignment</h2>
+            <form id="gradeForm" class="grade-form">
+              <div class="form-group">
+                <label for="assignmentName">Assignment Name</label>
+                <input
+                  type="text"
+                  id="assignmentName"
+                  placeholder="e.g., Midterm Exam, Homework 1"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pointsEarned">Points Earned</label>
+                  <input
+                    type="number"
+                    id="pointsEarned"
+                    min="0"
+                    step="0.01"
+                    placeholder="85"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="pointsPossible">Points Possible</label>
+                  <input
+                    type="number"
+                    id="pointsPossible"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="100"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" required>
+                  <option value="">Select Category</option>
+                  <option value="homework">Homework</option>
+                  <option value="quiz">Quiz</option>
+                  <option value="exam">Exam</option>
+                  <option value="project">Project</option>
+                  <option value="participation">Participation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="weight">Weight (%)</label>
+                <input
+                  type="number"
+                  id="weight"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  placeholder="20"
+                  value="20"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add Assignment
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- Assignments List -->
+        <section class="assignments-section">
+          <div class="card">
+            <h2><i class="fas fa-list"></i> Assignments</h2>
+            <div id="assignmentsList" class="assignments-list">
+              <div class="no-assignments">
+                <i class="fas fa-clipboard-list"></i>
+                <p>No assignments added yet</p>
+                <p class="subtitle">
+                  Add your first assignment to get started!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+          <div class="card">
+            <h2><i class="fas fa-chart-bar"></i> Grade Statistics</h2>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="fas fa-percentage"></i>
+                </div>
+                <div class="stat-content">
+                  <h3>Overall Grade</h3>
+                  <p id="overallGrade" class="stat-value">--</p>
+                </div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="fas fa-medal"></i>
+                </div>
+                <div class="stat-content">
+                  <h3>Letter Grade</h3>
+                  <p id="letterGrade" class="stat-value">--</p>
+                </div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="fas fa-calculator"></i>
+                </div>
+                <div class="stat-content">
+                  <h3>GPA</h3>
+                  <p id="gpaValue" class="stat-value">--</p>
+                </div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-content">
+                  <h3>Total Assignments</h3>
+                  <p id="totalAssignments" class="stat-value">0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Category Breakdown -->
+        <section class="category-section">
+          <div class="card">
+            <h2><i class="fas fa-pie-chart"></i> Category Breakdown</h2>
+            <div id="categoryBreakdown" class="category-breakdown">
+              <div class="no-categories">
+                <i class="fas fa-chart-pie"></i>
+                <p>No categories to display</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Learning Section -->
+      <section class="learning-section">
+        <h2>
+          <i class="fas fa-lightbulb"></i> JavaScript Concepts Demonstrated
+        </h2>
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fas fa-list-ol"></i> Arrays</h3>
+            <ul>
+              <li>Array creation and manipulation</li>
+              <li>
+                <code>push()</code>, <code>filter()</code>, <code>map()</code>
+              </li>
+              <li><code>reduce()</code> for calculations</li>
+              <li>Array destructuring</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-cube"></i> Objects</h3>
+            <ul>
+              <li>Object creation and properties</li>
+              <li>Object methods</li>
+              <li>Object destructuring</li>
+              <li>JSON serialization</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-sync"></i> Loops</h3>
+            <ul>
+              <li><code>for...of</code> loops</li>
+              <li><code>forEach()</code> method</li>
+              <li>Array iteration methods</li>
+              <li>Conditional loops</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-code"></i> Functions</h3>
+            <ul>
+              <li>Function declarations</li>
+              <li>Arrow functions</li>
+              <li>Higher-order functions</li>
+              <li>Function parameters and returns</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sample Data Button -->
+      <div class="sample-data-section">
+        <button id="loadSampleData" class="btn btn-secondary">
+          <i class="fas fa-database"></i> Load Sample Data
+        </button>
+        <button id="clearAllData" class="btn btn-danger">
+          <i class="fas fa-trash"></i> Clear All Data
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

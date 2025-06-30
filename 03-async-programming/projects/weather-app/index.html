@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">
+          <span class="icon">🌤️</span>
+          Weather Dashboard
+        </h1>
+      </header>
+
+      <main class="main">
+        <!-- Search Section -->
+        <section class="search-section">
+          <div class="search-container">
+            <input
+              type="text"
+              id="cityInput"
+              placeholder="Enter city name..."
+              class="search-input"
+              autocomplete="off"
+            />
+            <button id="searchBtn" class="search-btn">
+              <span class="search-icon">🔍</span>
+              Search
+            </button>
+            <button
+              id="locationBtn"
+              class="location-btn"
+              title="Use current location"
+            >
+              <span class="location-icon">📍</span>
+            </button>
+          </div>
+          <div id="suggestions" class="suggestions hidden"></div>
+        </section>
+
+        <!-- Current Weather Section -->
+        <section class="current-weather" id="currentWeather">
+          <div class="weather-card loading" id="weatherCard">
+            <div class="loading-skeleton">
+              <div class="skeleton-text skeleton-title"></div>
+              <div class="skeleton-text skeleton-subtitle"></div>
+              <div class="skeleton-circle"></div>
+              <div class="skeleton-text skeleton-temperature"></div>
+            </div>
+
+            <div class="weather-content hidden" id="weatherContent">
+              <div class="weather-header">
+                <h2 class="city-name" id="cityName">Loading...</h2>
+                <p class="date" id="currentDate"></p>
+              </div>
+
+              <div class="weather-main">
+                <div class="weather-icon" id="weatherIcon">
+                  <img src="" alt="" id="iconImage" />
+                </div>
+                <div class="temperature-section">
+                  <span class="temperature" id="temperature">--°</span>
+                  <div class="feels-like">
+                    Feels like <span id="feelsLike">--°</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="weather-description" id="description">
+                Loading weather...
+              </p>
+
+              <div class="weather-details">
+                <div class="detail-item">
+                  <span class="detail-label">Humidity</span>
+                  <span class="detail-value" id="humidity">--%</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Wind Speed</span>
+                  <span class="detail-value" id="windSpeed">-- km/h</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Pressure</span>
+                  <span class="detail-value" id="pressure">-- hPa</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Visibility</span>
+                  <span class="detail-value" id="visibility">-- km</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Forecast Section -->
+        <section class="forecast-section" id="forecastSection">
+          <h3 class="section-title">5-Day Forecast</h3>
+          <div class="forecast-container" id="forecastContainer">
+            <!-- Forecast cards will be inserted here -->
+            <div class="forecast-loading">
+              <div class="loading-spinner"></div>
+              <p>Loading forecast...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section class="favorites-section" id="favoritesSection">
+          <h3 class="section-title">
+            Favorite Cities
+            <button
+              id="addFavoriteBtn"
+              class="add-favorite-btn"
+              title="Add current city to favorites"
+            >
+              ⭐ Add
+            </button>
+          </h3>
+          <div class="favorites-container" id="favoritesContainer">
+            <p class="no-favorites">
+              No favorite cities yet. Search for a city and add it to your
+              favorites!
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <!-- Error Modal -->
+      <div class="modal hidden" id="errorModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">⚠️ Error</h3>
+            <button class="modal-close" id="closeModal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p id="errorMessage">
+              An error occurred while fetching weather data.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" id="retryBtn">Retry</button>
+            <button class="btn btn-secondary" id="dismissBtn">Dismiss</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Notifications -->
+      <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="utils.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

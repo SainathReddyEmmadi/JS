@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Color Picker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Interactive Color Picker</h1>
+        <p>Select colors and see conversions in real-time</p>
+      </header>
+
+      <main class="color-picker-app">
+        <!-- Color Preview Section -->
+        <section class="color-preview" aria-label="Color Preview">
+          <div class="preview-box" id="color-preview">
+            <span class="preview-text">Preview</span>
+          </div>
+          <div class="color-info">
+            <div class="color-values">
+              <div class="color-format">
+                <label for="hex-value">HEX:</label>
+                <input
+                  type="text"
+                  id="hex-value"
+                  class="color-input"
+                  readonly
+                />
+                <button
+                  class="copy-btn"
+                  data-format="hex"
+                  aria-label="Copy HEX value"
+                >
+                  📋
+                </button>
+              </div>
+              <div class="color-format">
+                <label for="rgb-value">RGB:</label>
+                <input
+                  type="text"
+                  id="rgb-value"
+                  class="color-input"
+                  readonly
+                />
+                <button
+                  class="copy-btn"
+                  data-format="rgb"
+                  aria-label="Copy RGB value"
+                >
+                  📋
+                </button>
+              </div>
+              <div class="color-format">
+                <label for="hsl-value">HSL:</label>
+                <input
+                  type="text"
+                  id="hsl-value"
+                  class="color-input"
+                  readonly
+                />
+                <button
+                  class="copy-btn"
+                  data-format="hsl"
+                  aria-label="Copy HSL value"
+                >
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Color Controls Section -->
+        <section class="color-controls" aria-label="Color Controls">
+          <div class="control-group">
+            <h2>RGB Controls</h2>
+            <div class="slider-group">
+              <label for="red-slider">Red:</label>
+              <input
+                type="range"
+                id="red-slider"
+                class="color-slider"
+                min="0"
+                max="255"
+                value="255"
+              />
+              <input
+                type="number"
+                id="red-input"
+                class="number-input"
+                min="0"
+                max="255"
+                value="255"
+              />
+            </div>
+            <div class="slider-group">
+              <label for="green-slider">Green:</label>
+              <input
+                type="range"
+                id="green-slider"
+                class="color-slider"
+                min="0"
+                max="255"
+                value="0"
+              />
+              <input
+                type="number"
+                id="green-input"
+                class="number-input"
+                min="0"
+                max="255"
+                value="0"
+              />
+            </div>
+            <div class="slider-group">
+              <label for="blue-slider">Blue:</label>
+              <input
+                type="range"
+                id="blue-slider"
+                class="color-slider"
+                min="0"
+                max="255"
+                value="0"
+              />
+              <input
+                type="number"
+                id="blue-input"
+                class="number-input"
+                min="0"
+                max="255"
+                value="0"
+              />
+            </div>
+          </div>
+
+          <div class="control-group">
+            <h2>HSL Controls</h2>
+            <div class="slider-group">
+              <label for="hue-slider">Hue:</label>
+              <input
+                type="range"
+                id="hue-slider"
+                class="color-slider"
+                min="0"
+                max="360"
+                value="0"
+              />
+              <input
+                type="number"
+                id="hue-input"
+                class="number-input"
+                min="0"
+                max="360"
+                value="0"
+              />
+            </div>
+            <div class="slider-group">
+              <label for="saturation-slider">Saturation:</label>
+              <input
+                type="range"
+                id="saturation-slider"
+                class="color-slider"
+                min="0"
+                max="100"
+                value="100"
+              />
+              <input
+                type="number"
+                id="saturation-input"
+                class="number-input"
+                min="0"
+                max="100"
+                value="100"
+              />
+            </div>
+            <div class="slider-group">
+              <label for="lightness-slider">Lightness:</label>
+              <input
+                type="range"
+                id="lightness-slider"
+                class="color-slider"
+                min="0"
+                max="100"
+                value="50"
+              />
+              <input
+                type="number"
+                id="lightness-input"
+                class="number-input"
+                min="0"
+                max="100"
+                value="50"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Preset Colors Section -->
+        <section class="preset-colors" aria-label="Preset Colors">
+          <h2>Preset Colors</h2>
+          <div class="preset-grid" id="preset-grid">
+            <!-- Preset color swatches will be generated here -->
+          </div>
+          <button id="add-preset" class="action-btn">
+            Add Current Color to Presets
+          </button>
+        </section>
+
+        <!-- Color Palette Section -->
+        <section class="color-palette" aria-label="Color Palette">
+          <h2>Saved Palette</h2>
+          <div class="palette-grid" id="palette-grid">
+            <!-- Saved colors will appear here -->
+          </div>
+          <div class="palette-actions">
+            <button id="save-color" class="action-btn">Save Color</button>
+            <button id="clear-palette" class="action-btn secondary">
+              Clear Palette
+            </button>
+            <button id="export-palette" class="action-btn">
+              Export Palette
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <!-- Toast Notifications -->
+      <div id="toast-container" class="toast-container" aria-live="polite">
+        <!-- Toast messages will appear here -->
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

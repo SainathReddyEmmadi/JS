@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Calculator - Fundamentals Project</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1><i class="fas fa-calculator"></i> JavaScript Calculator</h1>
+        <p class="subtitle">
+          Demonstrating Variables, Functions, and Event Handling
+        </p>
+      </header>
+
+      <main class="calculator-container">
+        <div class="calculator">
+          <!-- Display Screen -->
+          <div class="display">
+            <div class="previous-operand" id="previousOperand"></div>
+            <div class="current-operand" id="currentOperand">0</div>
+          </div>
+
+          <!-- Button Grid -->
+          <div class="buttons">
+            <!-- Row 1: Clear and Delete -->
+            <button
+              class="btn btn-function span-2"
+              onclick="calculator.clear()"
+            >
+              <i class="fas fa-trash"></i> Clear
+            </button>
+            <button class="btn btn-function" onclick="calculator.delete()">
+              <i class="fas fa-backspace"></i>
+            </button>
+            <button
+              class="btn btn-operator"
+              onclick="calculator.chooseOperation('÷')"
+            >
+              ÷
+            </button>
+
+            <!-- Row 2: Numbers 7-9 and multiply -->
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('7')"
+            >
+              7
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('8')"
+            >
+              8
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('9')"
+            >
+              9
+            </button>
+            <button
+              class="btn btn-operator"
+              onclick="calculator.chooseOperation('×')"
+            >
+              ×
+            </button>
+
+            <!-- Row 3: Numbers 4-6 and subtract -->
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('4')"
+            >
+              4
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('5')"
+            >
+              5
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('6')"
+            >
+              6
+            </button>
+            <button
+              class="btn btn-operator"
+              onclick="calculator.chooseOperation('-')"
+            >
+              −
+            </button>
+
+            <!-- Row 4: Numbers 1-3 and add -->
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('1')"
+            >
+              1
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('2')"
+            >
+              2
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('3')"
+            >
+              3
+            </button>
+            <button
+              class="btn btn-operator"
+              onclick="calculator.chooseOperation('+')"
+            >
+              +
+            </button>
+
+            <!-- Row 5: Zero, decimal, and equals -->
+            <button
+              class="btn btn-number span-2"
+              onclick="calculator.appendNumber('0')"
+            >
+              0
+            </button>
+            <button
+              class="btn btn-number"
+              onclick="calculator.appendNumber('.')"
+            >
+              .
+            </button>
+            <button class="btn btn-equals" onclick="calculator.compute()">
+              =
+            </button>
+          </div>
+
+          <!-- Advanced Functions -->
+          <div class="advanced-functions">
+            <h3><i class="fas fa-cogs"></i> Advanced Functions</h3>
+            <div class="advanced-buttons">
+              <button
+                class="btn btn-advanced"
+                onclick="calculator.percentage()"
+              >
+                %
+              </button>
+              <button class="btn btn-advanced" onclick="calculator.square()">
+                x²
+              </button>
+              <button
+                class="btn btn-advanced"
+                onclick="calculator.squareRoot()"
+              >
+                √x
+              </button>
+              <button
+                class="btn btn-advanced"
+                onclick="calculator.reciprocal()"
+              >
+                1/x
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Panel -->
+        <div class="history-panel">
+          <h3><i class="fas fa-history"></i> Calculation History</h3>
+          <div class="history-list" id="historyList">
+            <p class="no-history">No calculations yet</p>
+          </div>
+          <button class="btn btn-function" onclick="calculator.clearHistory()">
+            <i class="fas fa-trash"></i> Clear History
+          </button>
+        </div>
+      </main>
+
+      <!-- Learning Section -->
+      <section class="learning-section">
+        <h2>
+          <i class="fas fa-graduation-cap"></i> JavaScript Concepts Demonstrated
+        </h2>
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fas fa-cube"></i> Variables</h3>
+            <ul>
+              <li><code>let</code> for mutable values</li>
+              <li><code>const</code> for constants</li>
+              <li>Number and string data types</li>
+              <li>Boolean for state management</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-code"></i> Functions</h3>
+            <ul>
+              <li>Function declarations</li>
+              <li>Arrow functions</li>
+              <li>Method definitions</li>
+              <li>Event handlers</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-mouse-pointer"></i> DOM Manipulation</h3>
+            <ul>
+              <li>Element selection</li>
+              <li>Event listeners</li>
+              <li>Dynamic content updates</li>
+              <li>CSS class manipulation</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-branch-code"></i> Control Flow</h3>
+            <ul>
+              <li>Conditional statements</li>
+              <li>Switch cases</li>
+              <li>Error handling</li>
+              <li>Input validation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

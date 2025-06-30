@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Management System - OOP Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .demo-section {
+        margin: 20px 0;
+        padding: 15px;
+        background: #f8f9fa;
+        border-left: 4px solid #007bff;
+        border-radius: 4px;
+      }
+
+      .demo-section h3 {
+        margin-top: 0;
+        color: #007bff;
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .output {
+        background: #000;
+        color: #00ff00;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        line-height: 1.4;
+        max-height: 400px;
+        overflow-y: auto;
+        margin-top: 10px;
+      }
+
+      .error {
+        color: #ff4444;
+      }
+
+      .warning {
+        color: #ffaa00;
+      }
+
+      .info {
+        color: #44aaff;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .status-active {
+        background: #28a745;
+      }
+
+      .status-inactive {
+        background: #dc3545;
+      }
+
+      .status-warning {
+        background: #ffc107;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📚 Library Management System</h1>
+      <p style="text-align: center; color: #666">
+        A comprehensive Object-Oriented Programming demonstration in JavaScript
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="container">
+        <div class="demo-section">
+          <h3>🏗️ System Initialization</h3>
+          <button onclick="initializeSystem()">
+            Initialize Library System
+          </button>
+          <button onclick="loadSampleData()">Load Sample Data</button>
+          <button onclick="showSystemStatus()">Show System Status</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="demo-section">
+          <h3>👥 User Management</h3>
+          <button onclick="createUsers()">Create Sample Users</button>
+          <button onclick="authenticateUser()">Test Authentication</button>
+          <button onclick="showUserProfiles()">Show User Profiles</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="demo-section">
+          <h3>📖 Book Management</h3>
+          <button onclick="addBooks()">Add Sample Books</button>
+          <button onclick="searchBooks()">Search Books</button>
+          <button onclick="showBookCatalog()">Show Catalog</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="demo-section">
+          <h3>🔄 Transactions</h3>
+          <button onclick="borrowBooks()">Borrow Books</button>
+          <button onclick="returnBooks()">Return Books</button>
+          <button onclick="showTransactionHistory()">
+            Transaction History
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="demo-section">
+          <h3>🔔 Notifications</h3>
+          <button onclick="sendNotifications()">Send Notifications</button>
+          <button onclick="showNotificationHistory()">
+            Notification History
+          </button>
+          <button onclick="testEventSystem()">Test Event System</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="demo-section">
+          <h3>📊 Reports</h3>
+          <button onclick="generateUsageReport()">Usage Report</button>
+          <button onclick="generatePopularBooksReport()">Popular Books</button>
+          <button onclick="generateFinancialReport()">Financial Report</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>📋 Console Output</h3>
+      <div id="output" class="output">
+        Welcome to the Library Management System Demo!<br />
+        Click the buttons above to test different features.<br />
+        <br />
+        <span class="info">Status:</span>
+        <span class="status-indicator status-inactive"></span> System not
+        initialized<br />
+      </div>
+    </div>
+
+    <!-- Load all the JavaScript modules -->
+    <script type="module" src="demo/demo.js"></script>
+
+    <script>
+      // Global output function for the demo
+      function output(message, type = "info") {
+        const outputDiv = document.getElementById("output");
+        const timestamp = new Date().toLocaleTimeString();
+        const className =
+          type === "error" ? "error" : type === "warning" ? "warning" : "info";
+
+        outputDiv.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span><br>`;
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+      }
+
+      // Clear output
+      function clearOutput() {
+        document.getElementById("output").innerHTML = "";
+      }
+
+      // Add clear button functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const outputContainer = document.getElementById("output").parentElement;
+        const clearButton = document.createElement("button");
+        clearButton.textContent = "Clear Output";
+        clearButton.onclick = clearOutput;
+        clearButton.style.float = "right";
+        clearButton.style.marginBottom = "10px";
+        outputContainer.insertBefore(
+          clearButton,
+          document.getElementById("output")
+        );
+      });
+    </script>
+  </body>
+</html>

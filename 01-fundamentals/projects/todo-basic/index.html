@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List - JavaScript Fundamentals</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1><i class="fas fa-check-square"></i> Todo List</h1>
+        <p class="subtitle">
+          Demonstrating Arrays, Objects, DOM Manipulation, and Local Storage
+        </p>
+      </header>
+
+      <main class="main-content">
+        <!-- Todo Input Section -->
+        <section class="input-section">
+          <div class="card">
+            <h2><i class="fas fa-plus"></i> Add New Task</h2>
+            <form id="todoForm" class="todo-form">
+              <div class="form-group">
+                <label for="todoTitle">Task Title</label>
+                <input
+                  type="text"
+                  id="todoTitle"
+                  placeholder="Enter your task..."
+                  required
+                  maxlength="100"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="todoDescription">Description (Optional)</label>
+                <textarea
+                  id="todoDescription"
+                  placeholder="Add more details about your task..."
+                  rows="3"
+                  maxlength="250"
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="todoPriority">Priority</label>
+                  <select id="todoPriority" required>
+                    <option value="low">🟢 Low</option>
+                    <option value="medium" selected>🟡 Medium</option>
+                    <option value="high">🔴 High</option>
+                    <option value="urgent">🚨 Urgent</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="todoCategory">Category</label>
+                  <select id="todoCategory" required>
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="study">Study</option>
+                    <option value="health">Health</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="todoDueDate">Due Date (Optional)</label>
+                <input type="date" id="todoDueDate" />
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-plus"></i> Add Task
+                </button>
+                <button
+                  type="button"
+                  id="cancelEdit"
+                  class="btn btn-secondary"
+                  style="display: none"
+                >
+                  <i class="fas fa-times"></i> Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Todo List Section -->
+        <section class="todos-section">
+          <div class="card">
+            <div class="todos-header">
+              <h2><i class="fas fa-list"></i> Tasks</h2>
+              <div class="todos-controls">
+                <div class="filter-controls">
+                  <label for="filterStatus">Filter:</label>
+                  <select id="filterStatus">
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+                <div class="sort-controls">
+                  <label for="sortBy">Sort by:</label>
+                  <select id="sortBy">
+                    <option value="dateCreated">Date Created</option>
+                    <option value="dueDate">Due Date</option>
+                    <option value="priority">Priority</option>
+                    <option value="title">Title</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div id="todosList" class="todos-list">
+              <div class="no-todos">
+                <i class="fas fa-clipboard-list"></i>
+                <p>No tasks yet</p>
+                <p class="subtitle">Add your first task to get started!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Statistics Section -->
+      <section class="stats-section">
+        <div class="card">
+          <h2><i class="fas fa-chart-bar"></i> Statistics</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Total Tasks</h3>
+                <p id="totalTasks" class="stat-value">0</p>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Completed</h3>
+                <p id="completedTasks" class="stat-value">0</p>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Pending</h3>
+                <p id="pendingTasks" class="stat-value">0</p>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-percentage"></i>
+              </div>
+              <div class="stat-content">
+                <h3>Completion Rate</h3>
+                <p id="completionRate" class="stat-value">0%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Breakdown -->
+      <section class="category-section">
+        <div class="card">
+          <h2><i class="fas fa-tags"></i> Categories</h2>
+          <div id="categoryBreakdown" class="category-breakdown">
+            <div class="no-categories">
+              <i class="fas fa-tag"></i>
+              <p>No categories yet</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="actions-section">
+        <div class="card">
+          <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+          <div class="action-buttons">
+            <button id="markAllComplete" class="btn btn-success">
+              <i class="fas fa-check-double"></i> Mark All Complete
+            </button>
+            <button id="clearCompleted" class="btn btn-warning">
+              <i class="fas fa-broom"></i> Clear Completed
+            </button>
+            <button id="loadSampleTodos" class="btn btn-secondary">
+              <i class="fas fa-database"></i> Load Sample Data
+            </button>
+            <button id="clearAllTodos" class="btn btn-danger">
+              <i class="fas fa-trash"></i> Clear All
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Section -->
+      <section class="learning-section">
+        <h2>
+          <i class="fas fa-graduation-cap"></i> JavaScript Concepts Demonstrated
+        </h2>
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fas fa-list-ol"></i> Arrays & Methods</h3>
+            <ul>
+              <li>
+                <code>push()</code>, <code>filter()</code>, <code>find()</code>
+              </li>
+              <li>
+                <code>map()</code>, <code>sort()</code>, <code>forEach()</code>
+              </li>
+              <li>Array destructuring</li>
+              <li>Spread operator</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-cube"></i> Objects</h3>
+            <ul>
+              <li>Object creation and properties</li>
+              <li>Object destructuring</li>
+              <li>Method definitions</li>
+              <li>Property shorthand</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-mouse-pointer"></i> DOM Manipulation</h3>
+            <ul>
+              <li>Element selection and creation</li>
+              <li>Event listeners</li>
+              <li>Dynamic content updates</li>
+              <li>CSS class manipulation</li>
+            </ul>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-database"></i> Data Persistence</h3>
+            <ul>
+              <li>Local Storage API</li>
+              <li>JSON serialization</li>
+              <li>Data validation</li>
+              <li>Error handling</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
